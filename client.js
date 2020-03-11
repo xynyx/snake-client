@@ -28,6 +28,10 @@ const connect = function() {
   conn.on('data', (data) => {
     console.log("you ded cuz you idled");
   });
+  conn.on('connect', (data) => {
+    console.log("Successfully connected to game server");
+    conn.write("Name: MAT");
+  });
 
   return conn;
 };
