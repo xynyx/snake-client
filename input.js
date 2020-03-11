@@ -4,6 +4,9 @@ let connection;
  * Specifically, so that we can handle user input via stdin
  */
 const setupInput = function(conn) {
+  // in play.js --> setupInput(connect());
+  // thus conn becomes connection
+  // Connection becomes the entire connect() function in client.js
   connection = conn;  
   const stdin = process.stdin;
   stdin.setRawMode(true);
@@ -17,10 +20,13 @@ const setupInput = function(conn) {
 const handleUserInput = function(key) {
   if (key === '\u0003') {
     process.exit();
+    // Must write to the server by calling connection (which again, is the connect() function in client.js)
   } else if (key === "w") connection.write("Move: up")
   else if (key === "a") connection.write("Move: left")
   else if (key === "s") connection.write("Move: down")
   else if (key === "d") connection.write("Move: right")
+  else if (key === "t") connection.write("Say: You ssssuck!")
+  else if (key === "g") connection.write("Say: U eating snek poo")
 }
 
 module.exports = { setupInput };
