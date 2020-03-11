@@ -25,10 +25,10 @@ const connect = function() {
 
   // When you idle, print out the console log
   // conn.on = while you are connected
-  conn.on('data', (data) => {
+  conn.on('data', () => {
     console.log("you ded cuz you idled");
   });
-  conn.on('connect', (data) => {
+  conn.on('connect', () => {
     console.log("Successfully connected to game server");
     conn.write("Name: MAT");
   });
